@@ -1,0 +1,49 @@
+﻿@using CvAsp2.Tool
+@model IEnumerable<Model_Data_Acces_Layer.Model.Compétences>
+@inject SessionManager _session
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Compétences</h1>
+@if(!(_session.CurrentUser is null))
+{
+    <p>
+    <a asp-action="Create">Ajouter une compétence</a>
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+        {
+            <tr>
+                <td style="font-size:25px; width:250px">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="width:300px;">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                    </div>
+                </td>
+                
+                @if(!(_session.CurrentUser is null))
+                {
+                <td style="font-size:25px;text-align:center; width:300px">
+                    @Html.ActionLink("Modifier", "Edit", new {  id=item.Id  }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+                </td> 
+                }
+            </tr>
+        }
+        
+    </tbody>
+</table>

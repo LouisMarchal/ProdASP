@@ -1,0 +1,51 @@
+﻿@using CvAsp2.Tool
+@model IEnumerable<Model_Data_Acces_Layer.Model.Expérience>
+@inject SessionManager _session
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Expérience</h1>
+@if(!(_session.CurrentUser is null))
+{
+    <p>
+    <a asp-action="Create">Ajouter une expérience</a>
+    </p>
+}
+
+
+
+@foreach (var item in Model) {
+        <div class="container  ">
+                <div class="mx-auto">
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.Employeur)
+                    </h2>
+                    <h3 class="">
+                    @Html.DisplayFor(modelItem => item.Fonction)
+                    </h3>
+                </div>
+
+                    <h5>
+                        Année de début : @Html.DisplayFor(modelItem => item.AnnéeDébut) 
+                    </h5>
+                    <h5>
+                         Année de fin :  @Html.DisplayFor(modelItem => item.AnnéeFin)
+                    </h5>
+   
+                @if(!(_session.CurrentUser is null))
+                {
+                <div style="float:right;margin-right:300px;margin-top:-75px">
+                    <h4>
+                        @Html.ActionLink("Modifier", "Edit", new {  id=item.Id  }) |
+                        @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+                    </h4>
+                </div>
+            
+                }
+       
+        </div>
+                <p>-------------------------------------------------------------------------------------------------------------------------------</p>
+                
+        
+}

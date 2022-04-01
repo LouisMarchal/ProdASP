@@ -1,0 +1,47 @@
+﻿@model CvAsp2.Models.ExpérienceForm
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Ajouter une expérience</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" type="hidden" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnéeDébut" class="control-label"></label>
+                <input asp-for="AnnéeDébut" class="form-control" />
+                <span asp-validation-for="AnnéeDébut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnéeFin" class="control-label"></label>
+                <input asp-for="AnnéeFin" class="form-control" />
+                <span asp-validation-for="AnnéeFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employeur" class="control-label"></label>
+                <input asp-for="Employeur" class="form-control" />
+                <span asp-validation-for="Employeur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fonction" class="control-label"></label>
+                <input asp-for="Fonction" class="form-control" />
+                <span asp-validation-for="Fonction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
